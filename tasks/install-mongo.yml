@@ -1,0 +1,20 @@
+---
+- name: Copy the YUM Repo for MongoDB
+  copy:
+    src: mongodb-org-6.0.repo
+    dest: /etc/yum.repos.d/
+  become: true
+
+- name: Run the YUM Package
+  ansible.builtin.yum:
+    name: mongodb-org
+    state: present
+    update_cache: yes
+  become: true
+
+- name: install ntp
+  ansible.builtin.yum:
+    name: ntp
+    state: present
+    update_cache: yes
+  become: true

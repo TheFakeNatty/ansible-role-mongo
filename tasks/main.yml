@@ -1,3 +1,8 @@
 ---
-- name: 
-    ping:
+# tasks file for mongoDB setup
+
+- name: install MongoDB
+  include_tasks: install-mongo.yml
+
+- name: Configure MongoDB
+  include_tasks: configure-mongo.yml

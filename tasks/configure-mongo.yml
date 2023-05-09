@@ -1,0 +1,21 @@
+---
+- name: Copy config file
+  copy: 
+    src: mongodb.conf
+    dest: /etc/mongodb.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: 
+    - restart mongodb
+  become: true
+- name: create /etc/security/limits.d/mongodb.conf
+  copy:
+    src: security-mongodb.conf
+    dest: /etc/security/limits.d/mongodb.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart mongodb
+  become: true
